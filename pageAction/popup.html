@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Popup</title>
+    <!--link href="popup.css" rel="stylesheet" type="text/css"-->
+    <style>
+    	body{
+    		width: 300px;
+			padding: 10px;
+			margin: 0px;
+			font-family: 'Lucida Grande', Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			color: #222;
+			background-color:#efefef;
+			background-image:url('../img/rr_logo_160.png');
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+			background-position:bottom right; 
+    	}
+    	button {
+    		margin:4px 0;
+    	}
+    </style>
+  </head>
+  <body>
+    <button id="layoutDiff" style="display:none;">layout diff</button>
+    <button id="placementDiff" style="display:none;">placement diff</button>
+    <button id="placementStubber" style="display:none;">stubber</button>
+    <button id="placementStubberPlus" style="display:none;">stubber+</button>
+    <button id="siteList" style="display:none;">site list</button>
+    <script src="/pageAction/popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+{
+  // Required
+  "name": "RR Hacker",
+  "version": "0.1.0.2",
+  "manifest_version": 2,
+  
+  // Recommended
+  "description": "A collection of hacks I have collected or created to make working with the RR dashboard easier.",
+  "permissions": ["storage", "tabs"],
+  "content_scripts": [
+	{
+    	"matches": [
+    			"https://portal.richrelevance.com/rrportal/*",
+    			"https://*.richrelevance.com/rrportal/*"
+    		],
+        "js": [
+        		"/js/mustache.js",
+        		"/js/diffString.js",
+        		"/js/jquery.min.js",
+        		"/js/jquery.qtip.min.js",
+        		"/jquery-ui/js/jquery-ui.min.js",
+        		"/js/jquery.ba-throttle-debounce.min.js",
+        		"/js/common.js",
+        		"/pickles/layoutDiff.js",
+        		"/pickles/revisionNotes.js",
+        		"/pickles/siteList.js",
+        		"/pickles/recAssistAssist.js",
+        		"/pickles/graphZoom.js",
+        		"/pickles/placementStubber.js"
+        	],
+        "css":[
+        		"/css/common.css"
+        	]
+    } 
+  ],
+  "background": { "scripts": ["background.js"] },
+  "page_action": {
+    "default_icon": "img/19_icon_light.png",
+    "default_title": "RR Hacker",
+    "default_popup": "/pageAction/popup.html"
+  },
+  "icons": { 
+  		   "16": "/img/icon16.png",
+           "48": "/img/icon48.png",
+          "128": "/img/icon128.png" },
+  "options_page": "options.html",
+  "update_url": "http://clients.richrelevance.com/extensions/rr_hacker.xml"
+}

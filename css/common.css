@@ -1,0 +1,18 @@
+// Common.css
+
+
+// CSS for Layout Diff
+#hkr_layoutDiff code {
+	white-space: pre-wrap;
+	font-family: 'monospace';
+}
+#hkr_layoutDiff ins {
+	background: #E6FFE6;
+}
+#hkr_layoutDiff del {
+	background: #FFE6E6;
+}
+
+.addNote{
+	cursor:pointer;
+}

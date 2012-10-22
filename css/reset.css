@@ -1,0 +1,45 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+.hkr div, .hkr span, .hkr applet, .hkr object, .hkr iframe,
+.hkr h1, .hkr h2, .hkr h3, .hkr h4, .hkr h5, .hkr h6, .hkr p, .hkr blockquote, .hkr pre,
+.hkr a, .hkr abbr, .hkr acronym, .hkr address, .hkr big, .hkr cite, .hkr code,
+.hkr del, .hkr dfn, .hkr em, .hkr img, .hkr ins, .hkr kbd, .hkr q, .hkr s, .hkr samp,
+.hkr small, .hkr strike, .hkr strong, .hkr sub, .hkr sup, .hkr tt, .hkr var,
+.hkr b, .hkr u, .hkr i, .hkr center,
+.hkr dl, .hkr dt, .hkr dd, .hkr ol, .hkr ul, .hkr li,
+.hkr fieldset, .hkr form, .hkr label, .hkr legend,
+.hkr table, .hkr caption, .hkr tbody, .hkr tfoot, .hkr thead, .hkr tr, .hkr th, .hkr td,
+.hkr article, .hkr aside, .hkr canvas, .hkr details, .hkr embed,
+.hkr figure, .hkr figcaption, .hkr footer, .hkr header, .hkr hgroup,
+.hkr menu, .hkr nav, .hkr output, .hkr ruby, .hkr section, .hkr summary,
+.hkr time, .hkr mark, .hkr audio, .hkr video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+.hkr article, .hkr aside, .hkr details, .hkr figcaption, .hkr figure,
+footer, .hkr header, .hkr hgroup, .hkr menu, .hkr nav, .hkr section {
+	display: block;
+}
+.hkr ol, .hkr ul {
+	list-style: none;
+}
+.hkr blockquote, .hkr q {
+	quotes: none;
+}
+.hkr blockquote:before, .hkr blockquote:after,
+.hkr q:before, .hkr q:after {
+	content: '';
+	content: none;
+}
+.hkr table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
