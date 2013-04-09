@@ -12,7 +12,7 @@ var siteList = {};
     	templates = {};
         
     // mustache templates
-    templates.dialog = '<div id="hkr_siteList" title="Layout Difference"><table><tr><th>site id</th><th>api key</th><th>name</th><th>blue steel</th><th>enabled</th><th>created</th></tr>{{#sites}}<tr><td><a href="https://portal.richrelevance.com/rrportal/index.jsp?current_site_id={{id}}">{{id}}</a></td> <td>{{apiKey}}</td><td>{{name}}</td><td>{{isBlueSteelCustomer}}</td><td>{{enabled}}</td><td>{{created}}</td></tr>{{/sites}}</table></div>';
+    templates.dialog = '<div id="hkr_siteList" title="Site List"><table><tr><th>site id</th><th>api key</th><th>name</th><th>blue steel</th><th>enabled</th><th>created</th></tr>{{#sites}}<tr><td><a href="https://portal.richrelevance.com/rrportal/index.jsp?current_site_id={{id}}">{{id}}</a></td> <td>{{apiKey}}</td><td>{{name}}</td><td>{{isBlueSteelCustomer}}</td><td>{{enabled}}</td><td>{{created}}</td></tr>{{/sites}}</table></div>';
 
 	// main execution logic - builds UI
     exports.init = function () {
