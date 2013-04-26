@@ -18,6 +18,7 @@ chrome.extension.onMessage.addListener(
 });
 
 function goHack ( event ) {
+
 	$(this).unbind(event);
     setTimeout(function(){
     	
@@ -94,4 +95,14 @@ setTimeout(function(){
         if(pageId){
             publishStamp.init(pageId, pageName);
         }
+
+
+
+        chrome.storage.local.get('disable_NoLogout', function( result ) {
+            if ( result.disable_NoLogout ) {
+                setInterval(function() {
+                    $.getJSON("https://portal.richrelevance.com/rrportal/api/urls", function (data) {});
+                }, 15 * 60 * 1000);
+            }
+        });
     }, 100);

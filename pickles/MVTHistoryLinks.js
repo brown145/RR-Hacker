@@ -13,4 +13,8 @@ var MVTHistoryLinks = {};
       });
     });
   };
+
+  exports.init = function(){
+  	console.log('incomplete');
+  };
 })(MVTHistoryLinks);
