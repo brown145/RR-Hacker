@@ -61,6 +61,8 @@ if ( document.location.pathname === '/rrportal/sliceDiceReporting.jsp' || docume
 
 //for all pages
 setTimeout(function(){
+    links.init();
+
     var pageId, pageName ='error';
 
         switch(document.location.pathname){
