@@ -20,8 +20,6 @@ var links = {};
     	var el = $('.rr-sites-info'),
             values = el.text().replace(/\s{1,}/g,'').split('|');
 
-        console.log(values, get_catalog_browser_link(values[1]));
-
         el.append('| ', get_catalog_browser_link(values[1]), ' | ', get_feed_herder_link(values[2]));
     };
 })(links);
