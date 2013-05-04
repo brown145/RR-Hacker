@@ -1,7 +1,7 @@
 {
   // Required
   "name": "RR Hacker",
-  "version": "0.1.3.0",
+  "version": "1.0.0.1",
   "manifest_version": 2,
   
   // Recommended
@@ -10,8 +10,7 @@
   "content_scripts": [
 	{
     	"matches": [
-    			"https://portal.richrelevance.com/rrportal/*",
-    			"https://*.richrelevance.com/rrportal/*"
+    			"*://*.richrelevance.com/rrportal/*"
     		],
         "js": [
         		"/js/mustache.js",
@@ -38,7 +37,7 @@
   ],
   "background": { "scripts": ["background.js"] },
   "page_action": {
-    "default_icon": "img/19_icon_light.png",
+    "default_icon": "/img/19_icon_light.png",
     "default_title": "RR Hacker",
     "default_popup": "/pageAction/popup.html"
   },
