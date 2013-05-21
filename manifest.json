@@ -1,7 +1,7 @@
 {
   // Required
   "name": "RR Hacker",
-  "version": "1.0.1.0",
+  "version": "1.0.1.1",
   "manifest_version": 2,
   
   // Recommended
@@ -28,7 +28,6 @@
             "/pickles/graphZoom.js",
             "/pickles/publishStamp.js",
             "/pickles/placementStubber.js",
-            "/pickles/MVTHistoryLinks.js",
             "/pickles/links.js",
             "/pickles/reLinkSites.js"
         	],
