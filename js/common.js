@@ -11,7 +11,7 @@ chrome.extension.onMessage.addListener(
     	// TODO add logic to pass init setings
     	rr_labs.placementStubber.init(true, true);
     } else if (request.event === "siteList") {
-    	siteList.init();
+        siteList.init();
     }
     
 	sendResponse({success: true});
@@ -98,8 +98,11 @@ setTimeout(function(){
             publishStamp.init(pageId, pageName);
         }
 
+        // -----------------
+        // check for settings
+        // -----------------
 
-
+        // TODO move to pickle
         chrome.storage.local.get('disable_NoLogout', function( result ) {
             if ( result.disable_NoLogout ) {
                 setInterval(function() {
@@ -107,6 +110,14 @@ setTimeout(function(){
                 }, 15 * 60 * 1000);
             }
         });
+
+        // reLinkSites.js 
+        chrome.storage.local.get('enable_reLinkSites', function( result ) {
+            if ( result.enable_reLinkSites ) {
+                reLinkSites.init();
+            }
+        });
+
     }, 100);
 
 
