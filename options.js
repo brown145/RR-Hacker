@@ -1,8 +1,7 @@
-function test (){
-	chrome.storage.local.set({'use_layoutDiff': true}, function() {
-    	alert('Settings saved');
-	});
-}
+function reportThis(category, action){
+	action = action ? 'enabled' : 'disabled';
+    chrome.extension.sendRequest({message: "report", reportType:category, reportAction:action}, function(response) {});
+};
 
 $().ready(function(){
 	var chk_bigGraph = $('#rr_hrk_enbiggen');

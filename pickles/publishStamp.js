@@ -27,6 +27,7 @@ var publishStamp = {};
 
   		updateFunc = function(string){
   			area.val(string);
+        reportThis('publishStamp', 'populated');
   		};
 
   		publishStamp(pageId, pageName, updateFunc);

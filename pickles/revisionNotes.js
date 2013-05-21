@@ -14,7 +14,7 @@ var revisionNotes = {};
     siteInfo = $('.rr-sites-info').text();
     siteId = siteInfo.substr(siteInfo.lastIndexOf('|') + 2);
 
-    templates.addNewButton = '<span class="addNote"> [+]</span>';
+    templates.addNewButton = '<span class="addNote reportMe" data-category="revisionNotes"> [+]</span>';
     templates.noteFormat = '<strong>{{date}}</strong>: {{text}}';
 
     VersionObject = (function () {

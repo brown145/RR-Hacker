@@ -45,4 +45,5 @@ function sendMessage (message) {
     chrome.tabs.getSelected(null, function (tab) {
         chrome.tabs.sendMessage(tab.id, message, function (response) { });
     });
-}
+    chrome.extension.sendRequest({message: "report", reportType:message.event, reportAction:""}, function(response) {});
+};

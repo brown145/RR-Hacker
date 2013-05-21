@@ -13,7 +13,7 @@ var recAssistAssist = {};
 	apikey = $(".rr-sites-info").text();
 	apikey = apikey.substring(apikey.indexOf("|")+2, apikey.lastIndexOf("|")-1);
     templates.href = 'http://clients.richrelevance.com/tools/recassist/index.php?r3_placeholder=&r3_target=&r3_target_place=&ApiKey={{apiKey}}&BaseUrl={{env}}&UserId=0&SessionId=0&PlacementType={{pageType}}&PlacementName={{pageArea}}&SearchTerm=&categoryId=0&itemId=0&brand=&forceTreatment=0&forcedStrategies=';
-    templates.link = '<a href="{{href}}" class="hrk_recAssistLink" target="_new">[?]</a>';
+    templates.link = '<a href="{{href}}" class="hrk_recAssistLink reportMe" data-category="recAssistAssist" target="_new">[?]</a>';
     
     RecAssistObject = (function () {
         "use strict"
@@ -42,6 +42,7 @@ var recAssistAssist = {};
 
             objects[nextIndex++] = this;
         };
+
 
         return recAssistObject;
     })();

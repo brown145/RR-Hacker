@@ -108,3 +108,19 @@ setTimeout(function(){
             }
         });
     }, 100);
+
+
+// Watching code
+$(document.body).bind('click', function(e){
+    var $e = $(e.target);
+
+    if( $e.hasClass('reportMe') ){
+        reportThis($e.data('category'), $e.data('action'));
+    }
+});
+
+function reportThis(category, action){
+        console.log('logging', category, action);
+        chrome.extension.sendRequest({message: "report", reportType:category, reportAction:action}, function(response) {});
+
+}

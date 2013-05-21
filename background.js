@@ -21,4 +21,31 @@ chrome.tabs.getSelected(null, function(tab) {
     //console.log(response.farewell);
   });
 });
+};
+
+// Add tracking request
+var _gaq = _gaq || [];
+function trackPageview(){
+  _gaq.push(['_setAccount', 'UA-40687797-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://ssl.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+};
+trackPageview();
+
+function trackEvent(element, action){
+    if (!element) element = "unknown";
+    if (!action) action = "clicked";
+    _gaq.push(['_trackEvent', element, action]);
 }
+
+chrome.extension.onRequest.addListener(
+  function(request, sender, sendResponse) {
+    if (request.message === "report"){
+    	trackEvent(request.reportType, request.reportAction);
+    }
+  });

@@ -57,7 +57,7 @@ var graphZoom = {};
    
 	
 	exports.init = function () {
-		$(chart_select).after($('<span id="rrhkr_enbiggen">enbiggen</span>').css({
+		$(chart_select).after($('<span id="rrhkr_enbiggen" class="reportMe" data-category="graphZoom">enbiggen</span>').css({
 			'padding': '0 5px',
 			'cursor': 'pointer',
 			'color': '#990101'
