@@ -2,28 +2,39 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Called when the url of a tab changes.
-function checkForValidUrl(tabId, changeInfo, tab) {
-  // If the letter 'g' is found in the tab's URL...
-  if (tab.url.indexOf('.richrelevance.com/rrportal/') > -1) {
-    // ... show the page action.
-    chrome.pageAction.show(tabId);
-  }
-};
+
+/*!
+ * background.js - controls background processes for RR_Hacker chrome extension.
+ *
+ */
+
+
+
+// -----------------------------------------------------------
+// Event Listeners
+// ---
 
 // Listen for any changes to the URL of any tab.
 chrome.tabs.onUpdated.addListener(checkForValidUrl);
 
-function go(){
-chrome.tabs.getSelected(null, function(tab) {
-//console.log("going");
-  chrome.tabs.sendMessage(tab.id, {greeting: "hello"}, function(response) {
-    //console.log(response.farewell);
-  });
-});
-};
 
-// Add tracking request
+// Listen for Requests
+chrome.extension.onRequest.addListener(
+  function(request, sender, sendResponse) {
+
+    // If this is a "report" Request; prefrom required logging
+    if (request.message === "report"){
+      trackEvent(request.reportType, request.reportAction);
+    }
+
+  });
+
+
+
+// -----------------------------------------------------------
+// Google Analytics setup
+// ---
+
 var _gaq = _gaq || [];
 function trackPageview(){
   _gaq.push(['_setAccount', 'UA-40687797-1']);
@@ -37,15 +48,22 @@ function trackPageview(){
 };
 trackPageview();
 
+
+// -----------------------------------------------------------
+// Utility functions
+// ---
+
+
+// If url is RR url add the "page action" in the url bar
+function checkForValidUrl(tabId, changeInfo, tab) {
+  if (tab.url.indexOf('.richrelevance.com/rrportal/') > -1) {
+    chrome.pageAction.show(tabId);
+  }
+};
+
+// Log an event to google analytics
 function trackEvent(element, action){
     if (!element) element = "unknown";
     if (!action) action = "clicked";
     _gaq.push(['_trackEvent', element, action]);
-}
-
-chrome.extension.onRequest.addListener(
-  function(request, sender, sendResponse) {
-    if (request.message === "report"){
-    	trackEvent(request.reportType, request.reportAction);
-    }
-  });
+};
