@@ -47,5 +47,6 @@
            "48": "/img/icon48.png",
           "128": "/img/icon128.png" },
   "options_page": "options.html",
-  "update_url": "http://clients.richrelevance.com/extensions/rr_hacker.xml"
+  "update_url": "http://clients.richrelevance.com/extensions/rr_hacker.xml",
+  "homepage_url": "https://github.com/brown145/RR-Hacker"
 }

@@ -14,19 +14,27 @@ var layoutDiff = {};
     	templates = {};
         
     // mustache templates
-    templates.message = '&nbsp;&nbsp;<em class="hkr_instructions">select a layout from the dropdown to view layout differences</em>';
+    //templates.message = '&nbsp;&nbsp;<em class="hkr_instructions">select a layout from the dropdown to view layout differences</em>';
     templates.select = '<select id="hkr_diffSelect"><option value="-1">select</option>{{#options}}<option value={{value}}>{{name}}</option>{{/options}}</select>';
-    templates.dialog = '<div id="hkr_layoutDiff" title="Layout Difference">  <div id="hkr_settings" style="display:none;">    <span class="name"><strong>Name: </strong><em></em></span>   </div>    <div id="hkr_layoutDiffTargetWrapper" style="display:none;">        <h3>Wrapper</h3><code></code>    </div>    <div id="hkr_layoutDiffTargetItem" style="display:none;">        <h3>Item</h3><code></code>    </div><div id="hkr_layoutDiffTargetDiv" style="display:none;">        <h3>Divider</h3><code></code>    </div></div>';
+    templates.dialog = '<div id="hkr_layoutDiff" title="Layout Difference"> <div>Layouts with Pending Changes</div> <div id="hkr_settings" style="display:none;">    <span class="name"><strong>Name: </strong><em></em></span>   </div>    <div id="hkr_layoutDiffTargetWrapper" style="display:none;">        <h3>Wrapper</h3><code></code>    </div>    <div id="hkr_layoutDiffTargetItem" style="display:none;">        <h3>Item</h3><code></code>    </div><div id="hkr_layoutDiffTargetDiv" style="display:none;">        <h3>Divider</h3><code></code>    </div></div>';
     
     // event handler for layout selection
     function event_Selection(e) {
         var x = $(this).find(':selected').val();
         if (x >= 0) {
-            $('#hkr_layoutDiffTargetWrapper').show().find('code').html(options[x].diffs.wrapper);
-            $('#hkr_layoutDiffTargetItem').show().find('code').html(options[x].diffs.item);
-            $('#hkr_layoutDiffTargetDiv').show().find('code').html(options[x].diffs.divider);
+            $('#hkr_layoutDiffTargetWrapper').show().find('code').html(post_format(options[x].diffs.wrapper));
+            $('#hkr_layoutDiffTargetItem').show().find('code').html(post_format(options[x].diffs.item));
+            $('#hkr_layoutDiffTargetDiv').show().find('code').html(post_format(options[x].diffs.divider));
             $('#hkr_settings').show().find('.name em').html(options[x].diffs.name);
         }
+    };
+
+    function htmlEntities(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    };
+
+    function post_format(str){
+        return String(str).replace(/\n/g, '<br />');
     };
 
 	// main execution logic - builds UI
@@ -43,12 +51,12 @@ var layoutDiff = {};
                     	"value":   options.length, 
                     	"name":    record.name,
                     	diffs:{
-                    		"name":    diffString(escape(record.name), escape(record.delta.name)),
+                    		"name":    diffString(htmlEntities(record.name), htmlEntities(record.delta.name)),
                     		"grid":    Boolean(record.isGrid === record.delta.isGrid),
                     		"productHint":    Boolean(record.usesProductHint === record.delta.usesProductHint),
-	                        "wrapper": diffString(escape(record.wrapper), escape(record.delta.wrapper)),
-    	                    "item":    diffString(escape(record.item), escape(record.delta.item)),
-    	                    "divider":    diffString(escape(record.separator), escape(record.delta.separator))
+	                        "wrapper": diffString(htmlEntities(record.wrapper), htmlEntities(record.delta.wrapper)),
+    	                    "item":    diffString(htmlEntities(record.item), htmlEntities(record.delta.item)),
+    	                    "divider":    diffString(htmlEntities(record.separator), htmlEntities(record.delta.separator))
         				}
                     });
                 }
@@ -62,7 +70,7 @@ var layoutDiff = {};
                 close: function(event, ui) {
             			$(this).dialog('destroy').remove();
         			}
-            }).prepend(Mustache.render(templates.message, {})).prepend($(Mustache.render(templates.select, {options:options})).change(event_Selection));
+            }).prepend($(Mustache.render(templates.select, {options:options})).change(event_Selection));
         });
     };
 })(layoutDiff);
